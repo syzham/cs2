@@ -1,7 +1,6 @@
 #include "TriggerHack.h"
 
 void TriggerHack::RenderMenu() {
-	ImGui::Text("Attack: %d", localPlayer.getAttack());
 	ImGui::Checkbox("Activate##Trigger", &activateTrigger);
 }
 

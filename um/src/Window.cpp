@@ -148,7 +148,7 @@ void Draw(float posX, float posY, float width, float height) {
 		g_ResizeWidth = g_ResizeHeight = 0;
 		CreateRenderTarget();
 	}
-
+	
 	ImVec2 mainPos = ImGui::GetMainViewport()->Pos;
 
 	if (showConsole && !console.finished) {
@@ -180,7 +180,7 @@ void Render() {
 	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
 	ImGui::UpdatePlatformWindows();
 	ImGui::RenderPlatformWindowsDefault();
-	swapChain->Present(0, 0);
+	swapChain->Present(1, 0);
 }
 
 void CleanImGui() {

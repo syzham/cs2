@@ -8,7 +8,6 @@ Menu::Menu() {
 
 void Menu::Draw() {
 	ImGui::Begin("Teddy Cheats", nullptr);
-	ImGui::PushTabStop(false);
 	withinWindow = ImGui::GetWindowViewport() == ImGui::GetMainViewport();
 	if (ImGui::BeginTabBar("Hacks")) {
 		for (BaseHack* hack : hacks) {
@@ -19,7 +18,9 @@ void Menu::Draw() {
 		}
 		if (ImGui::BeginTabItem("Debug")) {
 			ImGui::Checkbox("Enable##Debug", &enableDebug);
+			ImGui::EndTabItem();
 		}
+		ImGui::EndTabBar();
 	}
 	ImGui::End();
 
@@ -38,7 +39,6 @@ void Menu::DrawOverlay(ImVec2 windowPos, ImVec2 windowSize) {
 	std::thread processes[3];
 	
 	for (int i = 0; i < hacks.Size; i++) {
-		Sleep(1);
 		processes[i] = std::thread(&BaseHack::Tick, &*hacks[i], windowPos, windowSize);
 	}
 
